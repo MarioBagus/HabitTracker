@@ -1,0 +1,13 @@
+{
+  "//": "Dipakai Vercel untuk meng-compile api/index.ts. Client & server punya tsconfig sendiri.",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "include": ["api/**/*.ts"]
+}

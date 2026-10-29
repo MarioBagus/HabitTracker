@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Palet "pine logbook": hijau pinus untuk berhasil, beri untuk gagal, kuning madu untuk belum. */
+:root {
+  --bg: #f3f5f2;
+  --surface: #ffffff;
+  --surface-2: #e9ede8;
+  --line: #dfe4de;
+  --ink: #1c2321;
+  --muted: #66716c;
+  --pine: #2e7d5b;
+  --pine-soft: #dcefe5;
+  --berry: #c2415a;
+  --berry-soft: #f8e1e5;
+  --honey: #c98a1b;
+  --honey-soft: #f7ecd5;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #121715;
+  --surface: #1a201e;
+  --surface-2: #232b28;
+  --line: #2a3330;
+  --ink: #e8eeeb;
+  --muted: #8c9a94;
+  --pine: #5cc08f;
+  --pine-soft: #1d3329;
+  --berry: #f07a8c;
+  --berry-soft: #3a1e24;
+  --honey: #e6b75a;
+  --honey-soft: #362c17;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-pine: var(--pine);
+  --color-pine-soft: var(--pine-soft);
+  --color-berry: var(--berry);
+  --color-berry-soft: var(--berry-soft);
+  --color-honey: var(--honey);
+  --color-honey-soft: var(--honey-soft);
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Figtree", ui-sans-serif, sans-serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: "tnum" 1;
+}
+
+:focus-visible {
+  outline: 2px solid var(--pine);
+  outline-offset: 2px;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Animasi kecil saat kegiatan dicentang */
+@keyframes pop {
+  0% { transform: scale(0.6); }
+  60% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+.animate-pop {
+  animation: pop 220ms ease-out;
+}
+
+@keyframes sheet-in {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.animate-sheet {
+  animation: sheet-in 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pop,
+  .animate-sheet {
+    animation: none;
+  }
+}
+
+/* Sembunyikan spinner input number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* emoji-mart picker */
+em-emoji-picker {
+  width: 100%;
+  height: 22rem;
+  --rgb-accent: 46, 125, 91;
+  --border-radius: 16px;
+  --shadow: none;
+}
+.dark em-emoji-picker {
+  --rgb-accent: 92, 192, 143;
+}
